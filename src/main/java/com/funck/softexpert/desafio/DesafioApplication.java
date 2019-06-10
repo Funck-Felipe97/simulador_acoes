@@ -18,7 +18,6 @@ public class DesafioApplication {
 		SpringApplication.run(DesafioApplication.class, args);
 	}
 	
-	@PostConstruct
 	public void simularCompraVendaAcao() {
 		simuladorNegociacaoAcaoService.iniciarSimulador();
 	}

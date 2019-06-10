@@ -20,8 +20,8 @@ public class ContaService {
 	@Autowired
 	private ContaRepository contaRepository;
 		
-	public Optional<Conta> findById(Long id) {
-		return this.contaRepository.findById(id);
+	public Optional<Conta> findById(Long contaId) {
+		return this.contaRepository.findById(contaId);
 	}
 
 	public List<Conta> findAll() {
@@ -52,8 +52,8 @@ public class ContaService {
 		return conta.getVendas();
 	}
 	
-	public Conta findContaById(Long conta) throws Exception {
-		Optional<Conta> contaOptional = contaRepository.findById(conta);
+	public Conta findContaById(Long contaId) throws Exception {
+		Optional<Conta> contaOptional = contaRepository.findById(contaId);
 		if (!contaOptional.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Conta inexistente");
 		}

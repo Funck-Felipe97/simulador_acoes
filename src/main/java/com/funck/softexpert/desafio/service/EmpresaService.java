@@ -21,8 +21,8 @@ public class EmpresaService {
 	@Autowired
 	private NegociacaoAcaoService negociacaoAcaoService;
 
-	public Optional<Empresa> findById(Long id) {
-		return empresaRepository.findById(id);
+	public Optional<Empresa> findById(Long empresaId) {
+		return empresaRepository.findById(empresaId);
 	}
 
 	public List<Empresa> findAll() {
@@ -43,7 +43,7 @@ public class EmpresaService {
 		BeanUtils.copyProperties(empresa, empresaOptional.get(), "id");
 		Empresa empresaSalva = empresaRepository.save(empresaOptional.get());
 		
-		negociacaoAcaoService.saveNegociacoesByEmpresa(empresaSalva);
+		negociacaoAcaoService.notifyChangeEmpresa(empresaSalva);
 		return empresaSalva;
 	}
 

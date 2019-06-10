@@ -19,8 +19,8 @@ public class EmailBuilder {
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setSubject("Nova negociação de ações");
 		email.setText(conteudoMensagem.toString());
-		email.setTo("funck.felipe@hotmail.com");
-		email.setFrom("funck@alunos.utfpr.edu.br");
+		email.setTo(negociacaoAcao.getConta().getEmailNotificacao());
+		email.setFrom("simulador.acoes.java@gmail.com");
 		return email;
 	}
 

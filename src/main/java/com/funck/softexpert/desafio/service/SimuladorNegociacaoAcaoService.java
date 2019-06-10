@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,12 @@ public class SimuladorNegociacaoAcaoService {
 
 	public void iniciarSimulador() {
 		new Thread(() -> {
-			Empresa empresa = empresaService.findById(1L).get();
+			Optional<Empresa> empresaOptional = empresaService.findById(1L);
+			if (!empresaOptional.isPresent()) {
+				return;
+			}
+			Empresa empresa = empresaOptional.get();
+			
 			for (int i = 0; i < 100; ++i) {
 				empresa.setPrecoAcao(getNovoPrecoAcao());
 				try {

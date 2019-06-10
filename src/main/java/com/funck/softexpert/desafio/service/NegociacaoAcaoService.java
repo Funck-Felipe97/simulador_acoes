@@ -38,8 +38,8 @@ public class NegociacaoAcaoService {
 	@Autowired
 	private MonitoramentoService monitoramentoService;
 
-	public Optional<NegociacaoAcao> findNegociacaoById(Long id) {
-		return negociacaoAcaoRepository.findById(id);
+	public Optional<NegociacaoAcao> findNegociacaoById(Long negociacaoId) {
+		return negociacaoAcaoRepository.findById(negociacaoId);
 	}
 
 	public List<NegociacaoAcao> findAllNegociacoes() {
@@ -51,7 +51,7 @@ public class NegociacaoAcaoService {
 	}
 
 	@Async
-	public void saveNegociacoesByEmpresa(Empresa empresa) {
+	public void notifyChangeEmpresa(Empresa empresa) {
 		Set<Monitoramento> monitoramentos = monitoramentoService.findByEmpresa(empresa);
 		for (Monitoramento monitoramento : monitoramentos) {
 			if (monitoramento.isComprarAcao()) {

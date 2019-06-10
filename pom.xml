@@ -80,13 +80,6 @@
 			<version>42.0.0</version>
 		</dependency>
 
-		<!-- Flyway -->
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-			<version>5.2.4</version>
-		</dependency>
-
 		<!-- Swagger2 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
