@@ -1,17 +1,3 @@
-CREATE USER funck WITH PASSWORD 'funck';
-
-CREATE SCHEMA IF NOT EXISTS desafio;
-
-GRANT CONNECT ON DATABASE desafio TO funck;
-
-GRANT USAGE ON SCHEMA public TO funck;
-
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO funck;
-
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO funck;
-
-SET search_path TO desafio;
-
 CREATE TABLE IF NOT EXISTS tb_conta (
   id                 bigserial NOT NULL,
   email_notificacao  varchar(255) NOT NULL,
@@ -65,7 +51,17 @@ INSERT INTO tb_conta (id, email_notificacao, saldo_inicial) VALUES
   (1, 'funck.felipe@hotmail.com', 550);
 
 INSERT INTO tb_empresa (id, nome, preco_acao) VALUES
-  (1, 'Intel', 10.93);
+  (1, 'Intel', 10.13);
+
+INSERT INTO tb_empresa (id, nome, preco_acao) VALUES
+  (2, 'SoftExpert', 10.53);
 
 INSERT INTO tb_monitoramento (id, empresa_id, conta_id, preco_compra, preco_venda) VALUES
-  (1, 1, 1, 20, 30);
+  (1, 1, 1, 10.08, 10.70);
+
+INSERT INTO tb_monitoramento (id, empresa_id, conta_id, preco_compra, preco_venda) VALUES
+  (2, 2, 1, 10.15, 10.60);
+
+
+
+

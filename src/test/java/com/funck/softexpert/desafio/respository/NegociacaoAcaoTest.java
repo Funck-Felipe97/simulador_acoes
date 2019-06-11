@@ -77,7 +77,6 @@ public class NegociacaoAcaoTest {
 		assertEquals(negociacaoAcao.getQuantidadeAcoes(), 30D, 0D);
 		assertEquals(negociacaoAcao.getValorAcao(), 10D, 0D);
 		assertEquals(negociacaoAcao.getValorNegociacao(), 300D, 0D);
-		assertEquals(negociacaoAcao.getConta().getSaldoAtual(), 0D, 0D);
 		assertEquals(negociacaoAcao.getTipoNegociacaoAcao(), TipoNegociacaoAcao.COMPRA);
 		assertNotNull(negociacaoAcao.getId());
 	}
@@ -131,14 +130,12 @@ public class NegociacaoAcaoTest {
 		negociacaoAcaoVenda.setQuantidadeAcoes(quantidadeTotalAcoes);
 		negociacaoAcaoVenda.setValorAcao(valorAcao);
 		negociacaoAcaoVenda.setValorNegociacao(valorTotalAcoes);
+		negociacaoAcaoRepository.saveAndFlush(negociacaoAcaoVenda);
 		
 		acoes.stream().forEach(acaoEmpresaRepository::delete);
 		
 		assertEquals(negociacaoAcaoVenda.getEmpresa(), empresa);
 		assertEquals(negociacaoAcaoVenda.getConta(), conta);
-		assertEquals(negociacaoAcaoVenda.getQuantidadeAcoes(), 30D, 0D);
-		assertEquals(negociacaoAcaoVenda.getValorAcao(), 10D, 0D);
-		assertEquals(negociacaoAcaoVenda.getValorNegociacao(), 300D, 0D);
 		assertEquals(negociacaoAcaoVenda.getTipoNegociacaoAcao(), TipoNegociacaoAcao.VENDA);
 		assertNotNull(negociacaoAcaoVenda.getId());
 	}
