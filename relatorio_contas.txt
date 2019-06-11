@@ -1,0 +1,39 @@
+Conta: 1, email: funck.felipe@hotmail.com
+--- Vendas realizadas ---
+venda de ações, Empresa: Intel, Quantidade de ações: 50.0, Valor da ação: 40.0, Valor da negociação: 2000.0, Data: 2019-06-07T13:09:37.748
+venda de ações, Empresa: Intel, Quantidade de ações: 250.0, Valor da ação: 58.0, Valor da negociação: 14500.0, Data: 2019-06-10T19:17:27.941
+venda de ações, Empresa: Intel, Quantidade de ações: 1812.5, Valor da ação: 58.0, Valor da negociação: 105125.0, Data: 2019-06-11T13:39:41.408
+--- Compras realizadas ---
+compra de ações, Empresa: Intel, Quantidade de ações: 37.5, Valor da ação: 12.0, Valor da negociação: 450.0, Data: 2019-06-07T12:50:03.827
+compra de ações, Empresa: Intel, Quantidade de ações: 12.5, Valor da ação: 8.0, Valor da negociação: 100.0, Data: 2019-06-07T13:05:52.058
+compra de ações, Empresa: Intel, Quantidade de ações: 250.0, Valor da ação: 8.0, Valor da negociação: 2000.0, Data: 2019-06-08T20:01:03.386
+compra de ações, Empresa: Intel, Quantidade de ações: 1812.5, Valor da ação: 8.0, Valor da negociação: 14500.0, Data: 2019-06-11T10:43:01.688
+compra de ações, Empresa: Intel, Quantidade de ações: 10183.73, Valor da ação: 10.32, Valor da negociação: 105125.0, Data: 2019-06-11T13:39:44.924
+
+
+Conta: 2, email: teste.conta@gmail.com
+--- Vendas realizadas ---
+--- Compras realizadas ---
+
+
+Conta: 4, email: novoteste.conta@gmail.com
+--- Vendas realizadas ---
+--- Compras realizadas ---
+
+
+Conta: 5, email: teste.conta@gmail.com
+--- Vendas realizadas ---
+--- Compras realizadas ---
+
+
+Conta: 6, email: teste.conta@gmail.com
+--- Vendas realizadas ---
+--- Compras realizadas ---
+
+
+Conta: 7, email: teste.conta@gmail.com
+--- Vendas realizadas ---
+--- Compras realizadas ---
+compra de ações, Empresa: Softexpert, Quantidade de ações: 9.47, Valor da ação: 10.55, Valor da negociação: 100.0, Data: 2019-06-11T13:21:20.421
+
+

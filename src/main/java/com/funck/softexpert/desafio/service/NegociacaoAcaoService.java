@@ -68,8 +68,8 @@ public class NegociacaoAcaoService {
 
 	@Transactional
 	private void realizarVenda(Empresa empresa, Conta conta) {
-		List<AcaoEmpresa> acoes = conta.getAcoesEmpresa().stream()
-				.filter(acoesEmpresa -> acoesEmpresa.getEmpresa().equals(empresa)).collect(Collectors.toList());
+		Set<AcaoEmpresa> acoes = conta.getAcoesEmpresa().stream()
+				.filter(acoesEmpresa -> acoesEmpresa.getEmpresa().equals(empresa)).collect(Collectors.toSet());
 
 		Double quantidadeTotalAcoes = acoes.stream().mapToDouble(AcaoEmpresa::getQuantidadeAcoes).sum();
 		Double valorAcao = empresa.getPrecoAcao();

@@ -4,11 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.funck.softexpert.desafio.model.Conta;
 import com.funck.softexpert.desafio.model.Empresa;
 
 @Service
@@ -16,46 +17,64 @@ public class SimuladorNegociacaoAcaoService {
 
 	@Autowired
 	private EmpresaService empresaService;
-	
+
 	@Autowired
 	private ContaService contaService;
 
+	/**
+	 * Método responsável por atualizar o valor de compra de ações de todas as
+	 * empresas cadastradas em um intervalor de 5 segundos por 100 iterações
+	 * 
+	 * @author funck
+	 */
 	public void iniciarSimulador() {
 		new Thread(() -> {
-			Optional<Empresa> empresaOptional = empresaService.findById(1L);
-			if (!empresaOptional.isPresent()) {
+			List<Empresa> empresas = empresaService.findAll();
+			if (empresas == null || empresas.isEmpty()) {
 				return;
 			}
-			Empresa empresa = empresaOptional.get();
-			
+
 			for (int i = 0; i < 100; ++i) {
-				empresa.setPrecoAcao(getNovoPrecoAcao());
+				for (Empresa empresa : empresas) {
+					empresa.setPrecoAcao(getNovoPrecoAcao());
+					try {
+						empresaService.update(empresa, empresa.getId());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				System.out.printf("--- Atualização (%d) ---\n", i);
 				try {
-					empresaService.update(empresa, empresa.getId());
-					System.out.println("--- Empresa atualizada ---");
 					Thread.sleep(5000);
-				} catch (Exception e) {
+				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
+
 			gerarRelatorioContas();
+
 		}).start();
 	}
 
 	private void gerarRelatorioContas() {
 		try {
-			
-			StringBuilder extratoTodasContas = new StringBuilder();
-			contaService.findAll()
-					.forEach(conta -> extratoTodasContas.append("\n\n" + conta.getExtratoAsString() + "\n\n"));
-			
 			FileOutputStream fileOutputStream;
 			PrintStream printStream;
 			fileOutputStream = new FileOutputStream(new File("relatorio_contas.txt").getAbsoluteFile(), true);
 			printStream = new PrintStream(fileOutputStream);
-			printStream.println(extratoTodasContas);
+
+			for (Conta conta : contaService.findAll()) {
+				printStream.println(conta);
+				printStream.println("--- Vendas realizadas ---");
+				conta.getVendas().forEach(venda -> printStream.println(venda));
+				printStream.println("--- Compras realizadas ---");
+				conta.getCompras().forEach(compra -> printStream.println(compra));
+				printStream.println("");
+				printStream.println("");
+			}
+
 			printStream.close();
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

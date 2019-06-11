@@ -170,20 +170,10 @@ public class Conta implements Serializable {
 			return false;
 		return true;
 	}
-	
-	public String getExtratoAsString() {
-		StringBuilder contaToString = new StringBuilder();
-		contaToString.append("Conta: " + getEmailNotificacao())
-			.append("\nSaldo inicial: " + getSaldoAtual())
-			.append("\nSaldo atual: " + getSaldoAtual());
-		
-		contaToString.append("\n\n--- Vendas realizadas----");
-		getVendas().forEach(venda -> contaToString.append("\n" + venda));
-		
-		contaToString.append("\n\n--- Compras realizadas----");
-		getCompras().forEach(compra -> contaToString.append("\n" + compra));
-		
-		return contaToString.toString();
-	}
 
+	@Override
+	public String toString() {
+		return "Conta: " + getId() + ", email: " + getEmailNotificacao();
+	}
+	
 }
