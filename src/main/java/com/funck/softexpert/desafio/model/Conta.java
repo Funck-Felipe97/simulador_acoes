@@ -173,7 +173,7 @@ public class Conta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Conta: " + getId() + ", email: " + getEmailNotificacao();
+		return "Conta: " + getId() + ", email: " + getEmailNotificacao() + ", saldo atual: " + getSaldoAtual();
 	}
 	
 }
