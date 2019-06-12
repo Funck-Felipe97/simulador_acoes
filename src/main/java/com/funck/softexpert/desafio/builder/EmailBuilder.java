@@ -10,11 +10,11 @@ public class EmailBuilder {
 		StringBuilder conteudoMensagem = new StringBuilder();
 		
 		conteudoMensagem
-				.append("Você acabou de realizar a" + negociacaoAcao.getTipoNegociacaoAcao().getDescricao())
+				.append("Você acabou de realizar a " + negociacaoAcao.getTipoNegociacaoAcao().getDescricao())
 				.append("\nEmpresa: " + negociacaoAcao.getEmpresa().getNome())
-				.append("\nValor da ação: " + negociacaoAcao.getValorAcao())
+				.append("\nValor da ação: " + MoedaBuilder.buildReal(negociacaoAcao.getValorAcao()))
 				.append("\nQuantidade de ações: " + negociacaoAcao.getQuantidadeAcoes())
-				.append("\nValor da negociação: " + negociacaoAcao.getValorNegociacao());
+				.append("\nValor da negociação: " + MoedaBuilder.buildReal(negociacaoAcao.getValorNegociacao()));
 
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setSubject("Nova negociação de ações");
